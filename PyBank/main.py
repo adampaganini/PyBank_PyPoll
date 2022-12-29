@@ -21,30 +21,41 @@ with open (budgetdata_csv, "r") as data:
     # typically, data columns will be int, but cover your bases by converting to int()
     total_change += int(first_row[1])
     previous_net = int(first_row[1])
+    #[0]= month column and [1] is profit/loss column
     for row in reader:
         total_months += 1 
         total_change += int(row[1])
         net_change = int(row[1])-previous_net 
         previous_net = int(row[1])
+        #take stuff and put it in an empty list I set up above:
         monthly_change += [net_change]
         month.append(row[0])# could work also for line 29
 
-        if net_change> max_increase:
+        if net_change> max_increase[1]:
             max_increase[0]=row[0]
             max_increase[1]=net_change
-# average monthly change calculation (sum)/len
+        if net_change < max_decrease[1]:
+            max_decrease[0]=row[0]
+            max_decrease[1]=net_change
 
+
+# average monthly change calculation (sum)/len
+avg_change = sum(monthly_change)/len(monthly_change)
+#use ''' to make massive comment / string value that observes line endings
 output=f'''
+
 Financial Analysis
 ----------------------------
 Total Months: {total_months}
-Total: $22564198
-Average Change: $-8311.11
-Greatest Increase in Profits: Aug-16 ($1862002)
-Greatest Decrease in Profits: Feb-14 ($-1825558)'''
+Total: ${total_change:,.2f}
+Average Change: ${avg_change:,.2f}
+Greatest Increase in Profits: {max_increase[0]} (${max_increase[1]:,.2f})
+Greatest Decrease in Profits:  {max_decrease[0]} (${max_decrease[1]:,.2f})'''
 
 print(output)
-with open()
+
+with open (text_file,"w") as outputfile:
+    outputfile.write(output)
 
 
 # add up all the numbers in the 2nd column
