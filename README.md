@@ -5,7 +5,7 @@ Here I present two database analyses: PyBank and PyPoll
 ### PyBank
 
 The "PyBank" analysis is a financial analysis to determine outcomes of a data set titled "budget_data.csv".
-The data set has 2 columns ("Date" and "Profits/Losses") that will allow us to calculate the following outcomes using the Python scripted titled "PyBank-main-calc-script.py":
+The data set has 2 columns ("Date" and "Profits/Losses") that will allow us to calculate the following outcomes using the Python scripted titled "[PyBank-main-calc-script.py](https://github.com/adampaganini/PyBank_PyPoll/blob/main/PyBank/PyBank-main-calc-script.py)":
 
 a) Total Months
 b) Total sum of money traded
